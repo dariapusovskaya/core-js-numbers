@@ -19,8 +19,7 @@
  *   5, 5  => 25
  */
 function getRectangleArea(width, height) {
-let res = width * height;
-  return res;
+  return width * height;
 }
 
 /**
@@ -35,7 +34,7 @@ let res = width * height;
  *   0    => 0
  */
 function getCircleCircumference(radius) {
- return 2 * Math.PI * radius;
+  return 2 * Math.PI * radius;
 }
 
 /**
@@ -51,7 +50,7 @@ function getCircleCircumference(radius) {
  *  -3, 3  => 0
  */
 function getAverage(value1, value2) {
-  return (value1 + value2)/2;
+  return (value1 + value2) / 2;
 }
 
 /**
@@ -69,7 +68,7 @@ function getAverage(value1, value2) {
  *   (-5,0) (10,-10) => 18.027756377319946
  */
 function getDistanceBetweenPoints(x1, y1, x2, y2) {
-  return Math.sqrt((x2 - x1)**2 + (y2 - y1)**2);
+  return Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
 }
 
 /**
@@ -87,13 +86,11 @@ function getDistanceBetweenPoints(x1, y1, x2, y2) {
 function getLinearEquationRoot(a, b) {
   if (a !== 0) {
     return -b / a;
-  } else {
-    if (b === 0) {
-      return null;
-    } else {
-      return null;
-    }
   }
+  if (b === 0) {
+    return null;
+  }
+  return null;
 }
 
 /**
@@ -140,7 +137,7 @@ function getAngleBetweenVectors(x1, y1, x2, y2) {
  *     0     => 0
  */
 function getLastDigit(value) {
-return value % 10;
+  return value % 10;
 }
 
 /**
@@ -155,7 +152,7 @@ return value % 10;
  * '-525.5'     => -525.5
  */
 function parseNumberFromString(value) {
-return Number(value);
+  return Number(value);
 }
 
 /**
@@ -172,7 +169,7 @@ return Number(value);
  *   1,2,3   => 3.741657386773941
  */
 function getParallelepipedDiagonal(a, b, c) {
-  const SumOfSq = a*a + b*b + c*c;
+  const SumOfSq = a * a + b * b + c * c;
   return Math.sqrt(SumOfSq);
 }
 
@@ -194,8 +191,8 @@ function getParallelepipedDiagonal(a, b, c) {
  *   1678, 3  => 2000
  */
 function roundToPowerOfTen(num, pow) {
-const div = Math.pow(10, pow);
-return Math.round(num / div)*div;
+  const div = 10 ** pow;
+  return Math.round(num / div) * div;
 }
 
 /**
@@ -245,8 +242,8 @@ function isPrime(n) {
  *   toNumber(new Number(42), 0) => 42
  */
 function toNumber(value, def) {
- const num = Number(value);
- return isNaN(num) ? def : num;
+  const num = Number(value);
+  return Number.isNaN(num) ? def : num;
 }
 
 /**
@@ -261,7 +258,7 @@ function toNumber(value, def) {
  *   0  => 0
  */
 function getCube(num) {
-return num**3;
+  return num ** 3;
 }
 
 /**
@@ -282,7 +279,7 @@ function getFibonacciNumber(index) {
   if (index === 1) return 1;
   let a = 0;
   let b = 1;
-  for (let i = 2; i <= index; i++) {
+  for (let i = 2; i <= index; i += 1) {
     const c = a + b;
     a = b;
     b = c;
@@ -301,9 +298,9 @@ function getFibonacciNumber(index) {
  *   10 => 55 // (1+2+3+...+10)
  *   1  => 1
  */
-function getSumToN(/* n */) {
+function getSumToN(n) {
   if (n < 1) return 0;
-  return n * (n + 1) / 2;
+  return (n * (n + 1)) / 2;
 }
 
 /**
@@ -318,14 +315,8 @@ function getSumToN(/* n */) {
  *   5   => 5  // 5
  */
 function getSumOfDigits(num) {
-  if (num < 0) n = Math.abs(num);
-  num = Math.floor(num);
-  const digits = num.toString().split('');
-  let sum = 0;
-  for (let digit of digits) {
-    sum += parseInt(digit);
-  }
-  return sum;
+  const digits = Math.abs(Math.floor(num)).toString().split('');
+  return digits.reduce((total, current) => total + Number(current), 0);
 }
 
 /**
@@ -341,7 +332,7 @@ function getSumOfDigits(num) {
  */
 function isPowerOfTwo(num) {
   if (num <= 0) return false;
-  return (num & (num - 1)) === 0;
+  return Math.log2(num) % 1 === 0;
 }
 
 /**
@@ -372,8 +363,8 @@ function getSine(num) {
 function numberToStringInBase(number, base) {
   if (base < 2 || base > 36) {
     throw new Error('Base must be between 2 and 36');
-}
-return number.toString(base);
+  }
+  return number.toString(base);
 }
 
 /**
@@ -418,7 +409,7 @@ function toFixed(number, fractionDigits) {
  * 12.345, 4   => '12.35'
  */
 function toPrecision(number, precision) {
-return number.toPrecision(precision);
+  return number.toPrecision(precision);
 }
 
 /**
@@ -451,9 +442,8 @@ function getNumberValue(number) {
  * '5'      => false
  */
 function isNumber(number) {
-  return typeof number === 'number' && isFinite(number);
+  return typeof number === 'number' && Number.isFinite(number);
 }
-
 
 /**
  * Returns a boolean value indicating whether a number is an integer or not.
@@ -514,7 +504,7 @@ function getIntegerOnString(str, base) {
  * 2 ** 53  => false
  */
 function isSafeInteger(number) {
- return Number.isSafeInteger(number)
+  return Number.isSafeInteger(number);
 }
 
 /**
@@ -588,7 +578,7 @@ function getIntegerPartNumber(number) {
  * 0.1, 0.2, 0.3 => 0.6
  */
 function getSumOfNumbers(x1, x2, x3) {
- return x1 + x2 + x3;
+  return x1 + x2 + x3;
 }
 
 /**
@@ -620,7 +610,7 @@ function getMaxNumber(firstNumber, secondNumber) {
  * -1, 1 => -1 | 0 | 1
  */
 function getRandomInteger(min, max) {
-return Math.floor(Math.random() * (max - min + 1)) + min;
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 /**
